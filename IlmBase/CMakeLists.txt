@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT ( ILMBase )
 
-IF ( NOT WIN32)
+IF ( NOT WIN32 )
   ADD_DEFINITIONS ( -pthread )
 ENDIF ()
 
@@ -64,6 +64,22 @@ ADD_SUBDIRECTORY ( Iex )
 ADD_SUBDIRECTORY ( IexMath )
 ADD_SUBDIRECTORY ( Imath )
 ADD_SUBDIRECTORY ( IlmThread )
+
+IF (CMAKE_GENERATOR STREQUAL "Visual Studio 8 2005")
+  SET (NO_VC_STDINT 1)
+ELSEIF (CMAKE_GENERATOR STREQUAL "Visual Studio 9 2008")
+  SET (NO_VC_STDINT 1)
+ELSEIF(CMAKE_GENERATOR STREQUAL "Visual Studio 9 2008 Win64")
+  SET (NO_VC_STDINT 1)
+ENDIF ()
+
+IF (NO_VC_STDINT)
+  FILE ( COPY ${CMAKE_SOURCE_DIR}/Windows/include/stdint.h
+    DESTINATION ${CMAKE_SOURCE_DIR}/config
+    )
+  MESSAGE(STATUS "CMAKE_GENERATOR '" ${CMAKE_GENERATOR} "' doesn't come with a stdint.h")
+  MESSAGE(STATUS "Using a public domain stdint.h: " ${CMAKE_SOURCE_DIR}/Windows/include/stdint.h)
+ENDIF ()
 
 IF (WIN32)
   FILE ( COPY ${CMAKE_SOURCE_DIR}/config.windows/IlmBaseConfig.h
