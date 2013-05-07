@@ -1,3 +1,9 @@
+* This README is 3 years old
+* IlmBase does not build out of the box following these instructions.
+* It looks like the real path is to use a version of cmake to generate vcproj.
+* see rather README.cmake.txt
+* -epu
+
 IlmBase is one of five software packages that were designed to work
 together: IlmBase, OpenEXR, OpenEXR_Viewers, CTL and OpenEXR_CTL.
 You may want to build Imath by itself, or together with one or more
@@ -189,7 +195,8 @@ Step 5. Compile OpenEXR_Viewers
   d. Build the Release configuration of the OpenEXR_Viewers.
 
   e. Build the Debug configuration if desired.
-
+
+
 At this point, the Deploy folder should be fully built out and ready
 to be used.  Both exrdisplay and playexr are meant to be launched from
 the command line, as they originated as unix commands, so open a command
