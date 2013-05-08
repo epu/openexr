@@ -16,7 +16,15 @@ CMakeLists.txt,and type command:
 2. Navigate to IlmBase folder in Windows Explorer, open ILMBase.sln
 and build the solution. When it build successfully, right click 
 INSTALL project and build. It will install the output to the path
-you set up at the previous step.  
+you set up at the previous step.
+  ** Sort of. If you spawn visual studio with 
+     CMAKE_INSTALL_PREFIX defined in environment, it will go there.
+     The default goes into "c:\program files\ilmbase", which is protected
+     by UAC, so it will likely error unless UAC is disabled.
+  ** It's almost impossible to do use the visual studio project in
+     automation to run the INSTALL target. It's easier to:
+         cmake -P cmake_install.cmake -DCMAKE_INSTALL_PREFIX=<path>
+     to control this.
 
 3. Go to http://www.zlib.net and download zlib 
 	  
