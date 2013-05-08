@@ -138,8 +138,15 @@ INSTALL ( FILES
   config/IlmBaseConfig.h
   DESTINATION
   include/OpenEXR
-
 )
+
+IF (NO_VC_STDINT)
+  INSTALL ( FILES 
+    config/stdint.h
+    DESTINATION
+    include/OpenEXR
+  )
+ENDIF ()
 
 FILE ( WRITE ${CMAKE_BINARY_DIR}/IlmBase.pc "prefix=${CMAKE_INSTALL_PREFIX}\n" )
 FILE ( APPEND ${CMAKE_BINARY_DIR}/IlmBase.pc "exec_prefix=\${prefix}
