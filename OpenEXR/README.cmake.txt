@@ -27,7 +27,7 @@ CMakeLists.txt, and type command:
 	cmake 
       -DZLIB_ROOT=<zlib location>
       -DILMBASE_PACKAGE_PREFIX=<where you installed the ilmbase builds>
-      -DCMAKE_INSTALL_PREFIX=<where you want to instal the openexr builds>
+      -DCMAKE_INSTALL_PREFIX=<where you want to install the openexr builds>
       -G "Visual Studio 10 Win64" ^
       ..\openexr
 
